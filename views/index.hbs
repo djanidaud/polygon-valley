@@ -1,0 +1,184 @@
+<html>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://preview.babylonjs.com/recast.js"></script>
+        <script src="https://code.jquery.com/pep/0.4.2/pep.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/libktx.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles/style.css">
+
+        <meta charset="UTF-8">
+        <title>Polygon Valley</title>
+
+    </head>
+
+    <body>
+        <div id="main" class="d-flex justify-content-center h-100 align-items-center">
+            <canvas id="canvas"> </canvas>
+        </div>
+        <div id="selectBox"></div>
+
+        <div id="topMenu" class="row">
+            <div class="menuColumn">      
+                <div id="woodTab">  <span id="totalWood"> 1</span> </div>
+            </div>
+            <div class="menuColumn">      
+                <div id="foodTab">  <span id="totalFood"> 11</span> </div>
+            </div>
+            <div class="menuColumn">      
+                <div id="coinsTab">  <span id="totalCoins"> 111</span> </div>
+            </div>
+            <div class="menuColumn">      
+                <div id="stoneTab">  <span id="totalStone"> 1111</span> </div>
+            </div>
+            <div class="menuColumn" style="float:right!important">      
+                <div id="populationTab">  <span id="totalPopulation"> </span> </div>
+            </div>
+        </div>
+
+        <div id="infoPanel" class="row mx-0">
+            <div class="h-100 p-1" id="infoPanelImg">
+                <img src="" class="img h-100" id="infoImg">
+            </div>
+
+            <div id="infoPanelBody" class="float-left pl-3 h-100">
+                <div class='row mx-0 h-100 align-items-center'>
+                    <div class="col-6 px-0 rounded" id="unitStats">
+                        <div class="row d-block text-center mx-0" id="infoPanelName"></div>
+                        <div class="row mx-0 pt-3">
+                            <div id="healthStats" class="col-6 px-0">
+                                <div class="row mx-0">
+                                    <div class="col-6 px-0 text-right">
+                                        <img class="statsIcon" src="/images/stats/health.png" />
+                                    </div>
+                                    <div class="col-6 pb-0 pl-1 statsText" id="healthStatsValue">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="damageStats" class="col-6 px-0">
+                                <div class="row mx-0">
+                                    <div class="col-6 px-0 text-right">
+                                        <img class="statsIcon" src="/images/stats/sword.png" />
+                                    </div>
+                                    <div class="col-6 pb-0 pl-1 statsText" id="damageStatsValue">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="speedStats" class="col-6 px-0">
+                                <div class="row mx-0">
+                                    <div class="col-6 px-0 text-right">
+                                        <img class="statsIcon" src="/images/stats/speed.png" />
+                                    </div>
+                                    <div class="col-6 pb-0 pl-1 statsText" id="speedStatsValue">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="populationStats" class="col-6 px-0">
+                                <div class="row mx-0">
+                                    <div class="col-6 px-0 text-right">
+                                        <img class="statsIcon" src="/images/stats/population.png" />
+                                    </div>
+                                    <div class="col-6 pb-0 pl-1 statsText" id="populationStatsValue">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 px-3" id="controls">
+                        <div class="row">
+                            <div class="col-12 pr-0 pl-3 text-center">
+                                <button id="moveButton" class="btn rounded control"></button>
+
+                                <button id="rotateButton" class="btn rounded control"></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 pr-0 pl-3 text-center">
+                                <button id="storeButton" class="btn rounded control"></button>
+
+                                <button id="upgradeButton" class="btn rounded control"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="float-left h-100">
+                <div id="customButtons"> 
+                </div>
+            </div>
+        </div>
+    
+        <div id="infoPanelMultiple" class="row mx-0"></div>
+
+        <div id="menu" style="display:none">
+            <div class="row py-4">
+                <div class="col-6 pr-0 pl-4"> </div>
+                <div class="col-6 text-center pl-0 pr-4">
+                    <button class="button" data - toggle="modal" data - target="#shopModal"> Shop </button></div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="shopModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data - dismiss="modal">
+                            <span> & times; </span> </button> </div>
+                    <div class="modal-body">
+                        <div class="card" style="width: 10rem;" id="shopItem0">
+                            {{!-- <img class="card-img-top" src="textures/models/house.png" alt="Villager House"> --}}
+                            <div class="card-body">
+                                <p class="card-text"> Cost: <span> 30 wood </span></p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 10rem;" id="shopItem1">
+                            {{!-- <img class="card-img-top" src="textures/models/mill.png" alt="Windmill"> --}}
+                            <div class="card-body">
+                                <p class="card-text"> Cost: <span> 30 wood </span> </p>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 10rem;" id="shopItem2">
+                            {{!-- <img class="card-img-top" src="textures/models/farm.png" alt="Farm"> --}}
+                            <div class="card-body">
+                                <p class="card-text"> Cost: <span> 30 wood </span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <a target="_blank" href="https://icons8.com/icons/set/like">Heart icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        <a target="_blank" href="https://icons8.com/icons/set/sword">Sword icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        <a target="_blank" href="https://icons8.com/icons/set/wind">Wind icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+        <a target="_blank" href="https://icons8.com/icons/set/crowd">Crowd icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
+    </body>
+    <script src = "/front-end-js/database.js" > </script>
+    <script src = "/front-end-js/classes.js" > </script>
+    <script src = "/front-end-js/frontFunctions.js" > </script> 
+    <script src = "/front-end-js/constructors.js" > </script> 
+    <script src="/front-end-js/main.js"> </script> 
+    <script src = "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity = "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin = "anonymous" > </script>
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity = "sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin = "anonymous" > </script>
+ </html>

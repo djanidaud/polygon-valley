@@ -1,0 +1,231 @@
+html, body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    cursor: pointer;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#menu {
+    width: 20%;
+    height: 23%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: peachpuff;
+}
+
+#selectBox {
+    background-color: transparent;
+    border: 1px solid red;
+    position: absolute;
+    z-index: 1000;
+}
+
+#topMenu {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    content: "";
+    clear: both;
+    display: table;
+    padding: 15px 15px 0px 15px;
+    z-index: 3;
+}
+
+#woodTab, #coinsTab, #foodTab, #stoneTab {
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-right: 35%;
+    text-align: right;
+}
+
+#woodTab {
+    background-image: url("/images/topMenu/woodTab.png");
+    margin-left: 15px;
+}
+
+#coinsTab {
+    background-image: url("/images/topMenu/goldTab.png");
+}
+
+#foodTab {
+    background-image: url("/images/topMenu/foodTab.png");
+}
+
+#stoneTab {
+    background-image: url("/images/topMenu/stoneTab.png");
+}
+
+#populationTab {
+    background-image: url("/images/topMenu/populationTab.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-right: 45%;
+    text-align: right;
+}
+
+.menuColumn {
+    float: left;
+    width: 15%;
+    padding: 5px 5px 0px 5px;
+}
+
+#inspector-host, #sceneExplorer {
+    z-index: 5;
+}
+
+#totalWood, #totalFood, #totalStone, #totalCoins, #totalPopulation {
+    font-size: 2vw;
+    color: white;
+}
+
+#customLoadingScreenDiv {
+    display: flex;
+    background-color: white;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    z-index: 6;
+}
+
+#customLoadingScreenDiv img {
+    display: block;
+    margin: auto;
+}
+
+
+
+/* Info Panel Related CSS */
+
+#infoPanel, #infoPanelMultiple {
+    height: 18vw;
+    position: absolute;
+    bottom: 0;
+    max-height: 200px;
+    visibility: hidden;
+}
+
+#infoPanelMultiple {
+    background-color: peachpuff;
+    border: 7px solid rgba(64, 50, 27);
+}
+
+#infoPanelBody {
+    border-top-right-radius: .5rem;
+    background-color: peachpuff;
+    border: 7px solid rgba(64, 50, 27);
+    border-left: none;
+}
+
+#storeButton, #moveButton, #rotateButton, #upgradeButton, #trainVillagers {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: none !important;
+    background-color: transparent !important;
+    width: 8vw;
+    height: 8vw;
+    padding: 0;
+    max-width: 85px;
+    max-height: 85px;
+}
+
+#moveButton {
+    background-image: url("/images/infoPanel/move.png");
+}
+
+#rotateButton {
+    background-image: url("/images/infoPanel/rotate.png");
+}
+
+#storeButton {
+    background-image: url("/images/infoPanel/store.png");
+}
+
+#upgradeButton {
+    background-image: url("/images/infoPanel/upgrade.png");
+}
+
+#infoPanelImg {
+    background-color: peachpuff;
+    border: 7px solid rgba(64, 50, 27);
+    border-right: none;
+}
+
+.statsIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.statsText {
+    font-weight: 300;
+    font-family: Herculanum;
+}
+
+#infoPanelName {
+    letter-spacing: 3px;
+    font-weight: 400;
+    max-height: 40px;
+}
+
+#unitStats {
+    border: 2px solid #86674b6b;
+    background-color: #f3eded38;
+    width: 200px;
+}
+
+/* Big screen css      */
+
+@media screen and (min-width: 320px) {
+    #infoPanelName {
+        font-size: 2vw;
+    }
+    .statsText {
+        font-size: 2vw;
+    }
+}
+
+/* Big screen css      */
+
+@media screen and (min-width: 1000px) {
+    .statsText {
+        font-size: 1.5vw;
+    }
+    #infoPanelName {
+        font-size: 1.3vw;
+    }
+
+}
+
+.control:hover {
+    transform: scale(1.2);
+}
+ 
+#customButtons {
+    border-top-right-radius: .5rem;
+    padding: 10% 0 10% 0;
+    margin-top: auto;
+    background-color: rgb(202, 158, 64);
+    border: 7px solid rgb(77, 61, 50);
+    border-left: none;
+}
+
+#trainVillagers {
+    background-image: url("/images/spawn/trainVillagerIdle.png");
+}
+
+#trainVillagers:hover {
+    background-image: url("/images/spawn/trainVillagerCost.png");
+    transition: all 0.3s;
+}
+
+/* ---------------------   */
