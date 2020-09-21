@@ -4,12 +4,16 @@
   "description": "A simple low-poly game",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js -e js,hbs,css"
   },
   "author": "Djani Daud",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
